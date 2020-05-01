@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     fun setTimeEvent(hours: Int, minute: Int) {
         textViewShowTime.text = "${hours}:${minute}"
+        val saveData = SaveData(applicationContext)
+
+        saveData.setAlarm(hours, minute)
     }
+
 }
