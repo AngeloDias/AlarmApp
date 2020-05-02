@@ -2,8 +2,6 @@ package br.com.training.android.alarmapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +10,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val saveData = SaveData(applicationContext)
+        textViewShowTime.text = "${saveData.getHour()}:${saveData.getMinute()}"
 
         btnSetTime.setOnClickListener {
             val popTime = PopTime()
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         textViewShowTime.text = "${hours}:${minute}"
         val saveData = SaveData(applicationContext)
 
-        saveData.setAlarm(hours, minute)
+        saveData.saveData(hours, minute)
+        saveData.setAlarm()
     }
 
 }
